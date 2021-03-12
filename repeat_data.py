@@ -2,7 +2,19 @@
 """...
 """
 import numpy as np
-from scipy.linalg import hadamard
+# from scipy.linalg import hadamard
+
+
+def hadamard(n):
+    """
+    # Sylvester construction
+    :param n: (divisible by 2)
+    :return: h
+    """
+    H = np.array([[1]], dtype=int)
+    for i in range(0, n):
+        H = np.vstack((np.hstack((H, H)), np.hstack((H, -H))))
+    return H
 
 
 def main():
@@ -11,7 +23,7 @@ def main():
     # more literate
     data_a = np.array(data)
     data_m = np.tile(data_a, (4, 1))
-    h4 = hadamard(4, dtype=int)
+    h4 = hadamard(2)
     trans = data_m * h4
     print(trans)
     return
