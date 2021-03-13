@@ -18,7 +18,7 @@ def main():
     m = hadamard(1)
     data = np.array([[1, 2], [3, 4]])
     print(data)
-    masked = ma.masked_array(data, mask=~m)
+    masked = ma.masked_array(data, mask=~m)  # mask is True when something needs to be masked out
     print(masked)
     return
 
